@@ -1,5 +1,23 @@
 # Cowin-public-API-Vaccination-slots-availability
 
+As the cowin app doesn't notifies for new available slots, this python script can be used to get notification for new posted vaccination slots through mail/sms/whatsapp/telegram, notification part is not done, a simple python code can be used to include notification 
+
+
+
+the program uses the cowin's public api to fetch data using python requests
+
+
+
+A simple python script to check available vaccination slots for a pincode/district
+
+
+
+
+Requirements:
+
+                requests
+                datetime
+
 #files
 
 1. cowin_states_and_districts.py
