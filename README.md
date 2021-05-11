@@ -39,7 +39,25 @@ Requirements:
         input: district name
     
         example: mumbai
+        
+ 3. cowin_district_calender.py
+
+        this file prints planned vaccination sessions for 7 days from current date in a given district.
+    
+        input: district name
+    
+        example: mumbai
  
-4. district_codes.txt
+ 2. cowin_pincode_calender.py
+
+        this file prints planned vaccination sessions for 7 days from current date in a given pin:
+    
+        input: pincode
+    
+        example: 282001 
+              
+
+
+6. district_codes.txt
 
         this file contains a dictionary of all the districts along with their id's
