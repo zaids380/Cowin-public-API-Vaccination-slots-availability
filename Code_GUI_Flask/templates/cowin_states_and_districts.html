@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+{% block body %}
+    
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Districts codes</th>
+      <th scope="col">District Names</th>
+      <th scope="col">State Names</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    {% for state , districts in final_districts.items() %}
+
+
+      {% for id,name in districts.items() %}
+          
+            <tr>
+              <td>{{name}}</td>
+              <td>{{id}}</td>
+              <td>{{state}}</td>
+            </tr>
+
+        {% endfor %}
+      {% endfor %}
+
+
+  </tbody>
+</table>
+
+
+{% endblock %}

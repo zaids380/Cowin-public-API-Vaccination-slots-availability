@@ -1,0 +1,50 @@
+{% extends "index.html" %}
+{% block body %}
+    
+    <div class="container col-md-4 my-2">
+    <form method="post" action="/cowin_district_calender">
+  <div class="form-group">
+    <label for="Districts">Enter District Name</label>
+    <input type="text" class="form-control" name="district" id="district" aria-describedby="district" placeholder="Enter your District" required>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Check</button>
+</form>
+</div>
+
+{% for date_key in dc_data %}
+  
+  {% for contents in dc_data[date_key] %}
+  <div class="alert alert-dark" role="alert">
+      <h6>Block Name : {{contents['block_name']}}</h6> 
+    </div>
+
+    <div class="my-3 mx-3">
+            Center ID : {{contents['center_id']}}<br>
+            Name : {{contents['name']}}<br>
+            Address : {{contents['address']}}<br>
+            State Name : {{contents['state_name']}} <br>
+            District Name : {{contents['district_name']}} <br>
+            Pincode : {{contents['pincode']}}<br>
+            Opening Time : {{contents['from']}}<br>
+            Closing Time : {{contents['to']}}<br>
+            Fee Type : {{contents['fee_type']}}<br>
+            {% for session in contents['sessions'] %}
+
+              <div class="my-2"><h6>Date : {{session['date']}}</h6></div>
+              Available Capacity : {{session['available_capacity']}}<br>
+              Min age limit : {{session['min_age_limit']}} <br>
+              Vaccine : {{session['vaccine']}} <br>
+              <div class="my-2"><h6>Timings</h6></div>
+              {% for slot in session['slots'] %}
+                {{slot}}<br>
+              {% endfor %}
+              <hr>
+
+            {% endfor %}
+    </div>
+    {% endfor %}
+
+{% endfor %}
+
+{% endblock %}

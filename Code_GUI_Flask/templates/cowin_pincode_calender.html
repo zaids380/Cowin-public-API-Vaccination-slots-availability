@@ -1,0 +1,51 @@
+{% extends "index.html" %}
+{% block body %}
+    
+    <div class="container col-md-4 my-2">
+    <form method="post" action="/cowin_pincode_calender">
+  <div class="form-group">
+    <label for="pincode">Enter Pincode</label>
+    <input type="text" class="form-control" name="cowin_pincode_calender" id="cowin_pincode_calender" aria-describedby="pincode" placeholder="Enter your Pincode" required>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Check</button>
+</form>
+</div>
+
+ <div class="container">
+ {% for slots in center %}
+          
+            <hr>
+            Center ID : {{slots['center_id']}}<br>
+            Name : {{slots['name']}}<br>
+            Address : {{slots['address']}}<br>
+            State Name : {{slots['state_name']}} <br>
+            District Name : {{slots['district_name']}} <br>
+            Pincode : {{slots['pincode']}}<br>
+            Opening Time : {{slots['from']}}<br>
+            Closing Time : {{slots['to']}}<br>
+            Fee Type : {{slots['fee_type']}}<br>
+            <br>
+            {% for info in slots['sessions'] %}
+              Date : {{info['date']}}<br>
+              Available Capacity : {{info['available_capacity']}}<br>
+              Min age limit : {{info['min_age_limit']}}<br>
+              Vaccine : {{info['vaccine']}}<br>
+              <br>
+              Timings
+              <br>
+            {% for time in info['slots'] %}
+              {{time}}<br>
+
+  {% endfor %}
+  <br>
+  {% endfor %}
+  {% endfor %}
+  </div>
+
+{% for cont in pc_data %}
+  <div class="alert alert-dark" role="alert">
+    <h6>{{cont}}</h6>
+  </div>
+{% endfor %}
+{% endblock %}

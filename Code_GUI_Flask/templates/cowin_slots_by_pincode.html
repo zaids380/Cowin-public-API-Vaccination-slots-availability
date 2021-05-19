@@ -1,0 +1,64 @@
+{% extends "index.html" %}
+{% block body %}
+    
+    
+    <div class="container col-md-4 my-2">
+    <form method="post" action="/cowin_slots_by_pincode">
+  <div class="form-group">
+    <label for="slotbypincode">Enter Pincode</label>
+    <input type="text" class="form-control" name="cowin_slots_by_pincode" id="cowin_slots_by_pincode" aria-describedby="slotbypincode" placeholder="Enter your Pincode" required>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Check</button>
+</form>
+</div>
+
+{% for date_key in sp_data %}
+
+
+    {% if sp_data[date_key] == 'No slots Available' %}
+       <div class="alert alert-dark" role="alert">
+      <h6>Date : {{date_key}}</h6>
+        </div>
+        
+        <div class="my-3 mx-3">{{sp_data[date_key]}}</div>
+
+    {% else %}
+
+      {% for contents in sp_data[date_key] %}
+
+        <div class="alert alert-dark" role="alert">
+          {{date_key}}
+        </div>        
+
+        <div class="my-3 mx-3">
+          
+            Center ID : {{contents['center_id']}}<br>
+            Name : {{contents['name']}}<br>
+            Address : {{contents['address']}}<br>
+            State Name : {{contents['state_name']}} <br>
+            District Name : {{contents['district_name']}} <br>
+            Pincode : {{contents['pincode']}}<br>
+            Opening Time : {{contents['from']}}<br>
+            Closing Time : {{contents['to']}}<br>
+            Fee Type : {{contents['fee_type']}}<br>
+            Fee : {{contents['fee']}}<br>
+            Available Capacity : {{contents['available_capacity']}}<br>
+            Min age limit : {{contents['min_age_limit']}}<br>
+            Vaccine : {{contents['vaccine']}}<br>
+            <br>
+            Timings<br>
+            {% for time in contents['slots'] %}
+              {{time}}<br>
+            {% endfor %}
+        </div>
+      {% endfor %}
+
+    {% endif %}
+    
+
+    
+
+{% endfor %}
+
+{% endblock %}
