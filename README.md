@@ -60,4 +60,4 @@ Requirements:
 
 6. district_codes.txt
 
-        this file contains a dictionary of all the districts along with their id's
+        this file contains a dictionary of all the districts along with their Id's
